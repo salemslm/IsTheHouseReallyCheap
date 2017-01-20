@@ -1,3 +1,5 @@
+'use strict';
+
 var MaisonJSON = [{
 	"title": "Belle Maison au bord de la mer",
   "type": "Maison"
