@@ -17,8 +17,8 @@ app.get('/scrape', function(req, res){
                 if(!error){
                     var $ = cheerio.load(html);
 
-                    var title, release, rating;
-                    var json = { title : "", release : "", rating : ""};
+                    var title, price, type, postal;
+                    var json = { title : "", price : "", postal : ""};
 
                     // We'll use the unique header class as a starting point.
                     // Title class is named "no-border". It's unique in the page.
@@ -36,6 +36,14 @@ app.get('/scrape', function(req, res){
                         json.price = price;
                         console.log(price)
                     })
+
+                    //Look for the location
+                   $('.line line_city').filter(function(){
+                        var data = $(this);
+                        postal =  data.children().text();
+                        json.postal = postal;
+                        console.log(postal)
+                    })
                 }
                 // To write to the system we will use the built in 'fs' library.
 // In this example we will pass 3 parameters to the writeFile function
@@ -52,7 +60,7 @@ fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
 // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
 res.send('Check your console!')
 
-    }) ;
+
 
 
 

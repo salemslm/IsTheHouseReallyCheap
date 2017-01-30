@@ -3,11 +3,11 @@
 var MaisonJSON = [{
 	"title": "Belle Maison au bord de la mer",
   "type": "Maison"
-	"lieu": "Hajeb",
-  "codePostal":99999,
-  "prix":100000,
-  "nombrePieces": 6,
-  "commentaire": "Maison avec piscine "
+	"locaticode": "Hajeb",
+  "postal":99999,
+  "price":100000,
+  "nbRooms": 6,
+  "comment": "Maison avec piscine "
 }];
 
 var EstimationJSON = [{
