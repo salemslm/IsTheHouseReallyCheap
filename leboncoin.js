@@ -78,7 +78,7 @@ app.get('/scrape', function(req, res){
 // Parameter 2 :  JSON.stringify(json, null, 4) - the data to write, here we do an extra step by calling JSON.stringify to make our JSON easier to read
 // Parameter 3 :  callback function - a callback function to let us know the status of our function
 
-fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
+fs.writeFile('outputLeboncoin.json', JSON.stringify(json, null, 4), function(err){
 
     console.log('File successfully written! - Check your project directory for the output.json file');
 
