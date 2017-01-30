@@ -8,7 +8,7 @@ app.get('/scrape', function(req, res){
 
   // The URL we will scrape from - in our example Anchorman 2.
 
-      url = 'https://www.leboncoin.fr/ventes_immobilieres/1083503132.htm?ca=12_s';
+      url = 'https://www.leboncoin.fr/ventes_immobilieres/1026430112.htm?ca=12_s';
 
       // The structure of our request call
       // The first parameter is our URL
@@ -17,33 +17,60 @@ app.get('/scrape', function(req, res){
                 if(!error){
                     var $ = cheerio.load(html);
 
-                    var title, price, type, postal;
-                    var json = { title : "", price : "", postal : ""};
+                    var title, price, type, location, city, postalCode, type;
+                    var json = { title : "", price : "", city : "", postalCode : "", type : ""};
 
                     // We'll use the unique header class as a starting point.
                     // Title class is named "no-border". It's unique in the page.
                     $('.no-border').filter(function(){
                         var data = $(this);
                         title = data.text();
-                        json.title = title;
-                        console.log(title)
+
                     })
 
                     //Look for the price
                    $('.item_price.clearfix').filter(function(){
                         var data = $(this);
                         price =  data.attr('content');
-                        json.price = price;
-                        console.log(price)
                     })
 
                     //Look for the location
-                   $('.line line_city').filter(function(){
+                   $('div.line.line_city').filter(function(){
                         var data = $(this);
-                        postal =  data.children().text();
-                        json.postal = postal;
-                        console.log(postal)
+                        location =  data.children().children().next().text();
                     })
+
+                    //Look for the house type
+                   $('div.line.line_city').filter(function(){
+                        var data = $(this);
+                        type =  data.next().next().children().children().next().text();
+                    })
+
+                   //Separate City and Postal codePostal
+                    var locationArray = location.split(" ");
+                    city = locationArray[0];
+                    postalCode = locationArray[1];
+
+
+                    // Ajust title.
+                    title = title.substring(14, title.length);
+                    var index = title.indexOf("\n");
+                    title = title.substring(0, index);
+
+
+                    json.type = type;
+                    json.city = city;
+                    json.postalCode = postalCode;
+                    json.title = title;
+                    json.price = price;
+
+                    console.log(title)
+                    console.log(price)
+                    console.log(location)
+                    console.log(type)
+
+
+
                 }
                 // To write to the system we will use the built in 'fs' library.
 // In this example we will pass 3 parameters to the writeFile function
