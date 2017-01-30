@@ -88,33 +88,8 @@ fs.writeFile('outputLeboncoin.json', JSON.stringify(json, null, 4), function(err
 res.send('Check your console!')
 
 
-
-
-
             })
 
-              //title = document.querySelector('#adview > section > header > h1').innerText
-              //json.title = title
-
-              // //Scrap the type
-              // type = document.querySelector('#adview > section > section > section.properties.lineNegative > div:nth-child(8) > h2 > span.value').innerText
-              // json.type = type
-              //
-              // //Scrap the location
-              // location = document.querySelector('#adview > section > section > section.properties.lineNegative > div.line.line_city > h2 > span.value').innerText
-              // json.location = location
-              //
-              // //Scrap the postalCode
-              //
-              // //Scrap the price
-              // price = document.querySelector('#adview > section > section > section.properties.lineNegative > div:nth-child(5) > h2 > span.value').innerText
-              // json.price = price
-              //
-              // //Scrap the number of Rooms
-              // nbRooms =   document.querySelector('#adview > section > section > section.properties.lineNegative > div:nth-child(9) > h2 > span.value').innerText
-              // json.price = nbRooms
-              //
-              // //Scrap the Comments
 
 })
 

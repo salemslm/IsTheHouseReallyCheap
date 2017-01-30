@@ -5,53 +5,105 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
 
+
+
+function getCleanString(indexStart, textCut, stringToBeClean){
+  stringToBeClean = stringToBeClean.substring(indexStart, stringToBeClean.length);
+  var index = stringToBeClean.indexOf(textCut);
+  stringToBeClean = stringToBeClean.substring(0, index);
+  return stringToBeClean;
+}
+
 app.get('/scrape', function(req, res){
 
   // The URL we will scrape from - in our example Anchorman 2.
 
       url = 'https://www.meilleursagents.com/prix-immobilier/argenteuil-95100/';
 
-      // The structure of our request call
-      // The first parameter is our URL
-      // The callback function takes 3 parameters, an error, response status code and the html
-        request(url, function(error, response, html){
-                if(!error){
+      // The structure of our request call The first parameter is our URL The
+      // callback function takes 3 parameters, an error, response status code
+      // and the html request(url, function(error, response, html){ if(!error){
 
-                  var $ = cheerio.load(html);
+      request(url, function(error, response, html){
 
-                  // Finally, we'll define the variables we're going to capture
+              //   First we'll check to make sure no errors occurred when making the request
 
-                  var title, release, rating;
-                  var json = { title : "", release : "", rating : ""};
+            if(!error){
+              // Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
 
-                }
+              var $ = cheerio.load(html);
+
+              // Finally, we'll define the variables we're going to capture
+
+              var prixMoyenAppart, prixMoyenMaison, loyerMensuel, evolutionAnnuelle;
+              var json = {prixMoyenAppart : "", prixMoyenMaison : "", loyerMensuel : "", evolutionAnnuelle : ""};
+
+              // Look for the average price per m² of an appart
+              $('.prices-summary__values').filter(function(){
+                  var data = $(this);
+                  prixMoyenAppart = data.children().next().children().first().next().next().text();
+
+              })
+
+              // Look for the average price per m² of a house
+              $('.prices-summary__values').filter(function(){
+                  var data = $(this);
+                  prixMoyenMaison = data.children().next().next().children().first().next().next().text();
+
+              })
+
+              // Look for the average monthly rent price per m²
+              $('.prices-summary__values').filter(function(){
+                  var data = $(this);
+                  loyerMensuel = data.children().next().next().next().children().first().next().next().text();
+
+              })
+
+              // Look for the average monthly rent price per m²
+              $('.prices-summary__right-panel').filter(function(){
+                  var data = $(this);
+                  evolutionAnnuelle = data.children().children().children().next().children().first().text();
+
+              })
+
+              // The web site give us strings with wastes
+              // Then, wse have to clean it.
+              prixMoyenAppart = getCleanString(14, "\n", prixMoyenAppart)
+              prixMoyenMaison = getCleanString(14, "\n", prixMoyenMaison)
+              loyerMensuel = getCleanString(14, "\n", loyerMensuel)
+              evolutionAnnuelle = getCleanString(44, "\n", evolutionAnnuelle)
 
 
-                // To write to the system we will use the built in 'fs' library.
-// In this example we will pass 3 parameters to the writeFile function
-// Parameter 1 :  output.json - this is what the created filename will be called
-// Parameter 2 :  JSON.stringify(json, null, 4) - the data to write, here we do an extra step by calling JSON.stringify to make our JSON easier to read
-// Parameter 3 :  callback function - a callback function to let us know the status of our function
 
-fs.writeFile('outputMA.json', JSON.stringify(json, null, 4), function(err){
+              // Fill json file.
+              json.prixMoyenAppart = prixMoyenAppart;
+              json.prixMoyenMaison = prixMoyenMaison;
+              json.loyerMensuel = loyerMensuel;
+              json.evolutionAnnuelle = evolutionAnnuelle;
 
-    console.log('File successfully written! - Check your project directory for the output.json file');
-
-})
-
-// Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
-res.send('Check your console!')
+              //Print results
+              console.log(prixMoyenAppart);
+              console.log(prixMoyenMaison);
+              console.log(loyerMensuel);
+              console.log(evolutionAnnuelle);
 
 
 
+            }
+            fs.writeFile('outputMA.json', JSON.stringify(json, null, 4), function(err){
 
+              console.log('File successfully written! - Check your project directory for the output.json file');
 
             })
+            // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
+            res.send('Check your console!')
 
+
+    })
 
 })
 
-app.listen('8081')
+app.listen('8081');
 console.log('Magic happens on port 8081');
 
 exports = module.exports = app;
