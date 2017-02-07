@@ -3,7 +3,6 @@ var express = require('express');
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
-var app     = express();
 
 
 
@@ -14,11 +13,15 @@ function getCleanString(indexStart, textCut, stringToBeClean){
   return stringToBeClean;
 }
 
-app.get('/scrape', function(req, res){
+var url = 'https://www.meilleursagents.com/prix-immobilier/argenteuil-95100/';
+
+
+module.exports = {
+  getDataFromWebSite2: function(url){
+    var json = {prixMoyenAppart : "", prixMoyenMaison : "", loyerMensuel : "", evolutionAnnuelle : ""};
 
   // The URL we will scrape from - in our example Anchorman 2.
 
-      url = 'https://www.meilleursagents.com/prix-immobilier/argenteuil-95100/';
 
       // The structure of our request call The first parameter is our URL The
       // callback function takes 3 parameters, an error, response status code
@@ -36,7 +39,6 @@ app.get('/scrape', function(req, res){
               // Finally, we'll define the variables we're going to capture
 
               var prixMoyenAppart, prixMoyenMaison, loyerMensuel, evolutionAnnuelle;
-              var json = {prixMoyenAppart : "", prixMoyenMaison : "", loyerMensuel : "", evolutionAnnuelle : ""};
 
               // Look for the average price per m² of an appart
               $('.prices-summary__values').filter(function(){
@@ -88,22 +90,21 @@ app.get('/scrape', function(req, res){
               console.log(evolutionAnnuelle);
 
 
-
+              //Fin du if
             }
+
             fs.writeFile('outputMA.json', JSON.stringify(json, null, 4), function(err){
 
-              console.log('File successfully written! - Check your project directory for the output.json file');
+              console.log('File successfully written! - Check your project directory for the outputMA.json file');
 
             })
             // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
-            res.send('Check your console!')
 
-
+            //Fin du request
     })
 
-})
+//Fin du function
+}
 
-app.listen('8081');
-console.log('Magic happens on port 8081');
-
-exports = module.exports = app;
+//Fin du exports
+}
