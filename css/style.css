@@ -74,8 +74,8 @@ form {
 	-webkit-border-radius: 0.3em;
 	-moz-border-radius: 0.3em;
 	-o-border-radius: 0.3em;
-	
-	
+
+
 }
 input[type="text"] {
 	font-family: 'Arimo', sans-serif;
@@ -93,11 +93,11 @@ input[type="text"] {
 	padding: 10px;
 	width: 74%;
 	position:relative;
-} 
+}
 input[type="submit"]{
-	width:50px; 
+	width:50px;
 	height:50px;
-	background: url(../images/submit.png) no-repeat; 
+	background: url(../images/submit.png) no-repeat;
 	outline: none;
 	border:none;
 	position:absolute;
