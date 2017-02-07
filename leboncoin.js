@@ -10,7 +10,7 @@ var url = 'https://www.leboncoin.fr/ventes_immobilieres/1026430112.htm?ca=12_s';
 
 module.exports = {
   getDataFromWebSite: function(url, callback){
-    var json = { title : "", price : "", city : "", postalCode : "", type : ""};
+    var json = { title : "", price : "", city : "", postalCode : "", type : "", houseSurface : ""};
 
           // The structure of our request call
           // The first parameter is our URL
@@ -19,7 +19,7 @@ module.exports = {
                     if(!error){
                         var $ = cheerio.load(html);
 
-                        var title, price, type, location, city, postalCode, type;
+                        var title, price, type, location, city, postalCode, type, houseSurface;
 
                         // We'll use the unique header class as a starting point.
                         // Title class is named "no-border". It's unique in the page.
@@ -47,6 +47,12 @@ module.exports = {
                             type =  data.next().next().children().children().next().text();
                         })
 
+                        //Look for the house surface
+                       $('div.line.line_city').filter(function(){
+                            var data = $(this);
+                            houseSurface =  data.next().next().next().next().children().children().next().text();
+                        })
+
                        //Separate City and Postal codePostal
                         var locationArray = location.split(" ");
                         city = locationArray[0];
@@ -58,17 +64,22 @@ module.exports = {
                         var index = title.indexOf("\n");
                         title = title.substring(0, index);
 
+                        // Ajust surface
+                        houseSurface = houseSurface.substring(0, 3);
+
 
                         json.type = type;
                         json.city = city;
                         json.postalCode = postalCode;
                         json.title = title;
                         json.price = price;
+                        json.houseSurface = houseSurface;
 
                         console.log(title)
                         console.log(price)
                         console.log(location)
                         console.log(type)
+                        console.log(houseSurface);
                         response = json;
 
                     }
