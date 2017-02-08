@@ -17,7 +17,7 @@ var url = 'https://www.meilleursagents.com/prix-immobilier/argenteuil-95100/';
 
 
 module.exports = {
-  getDataFromWebSite2: function(url){
+  getDataFromWebSite2: function(url, callback){
     var json = {prixMoyenAppart : "", prixMoyenMaison : "", loyerMensuel : "", evolutionAnnuelle : ""};
 
   // The URL we will scrape from - in our example Anchorman 2.
@@ -101,6 +101,7 @@ module.exports = {
             // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
 
             //Fin du request
+            return callback(json);
     })
 
 //Fin du function
