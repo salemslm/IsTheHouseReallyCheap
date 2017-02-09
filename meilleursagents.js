@@ -13,11 +13,10 @@ function getCleanString(indexStart, textCut, stringToBeClean){
   return stringToBeClean;
 }
 
-var url = 'https://www.meilleursagents.com/prix-immobilier/argenteuil-95100/';
 
 
 module.exports = {
-  getDataFromWebSite2: function(url, callback){
+  getDataFromWebSite2: function(postalCode, city, type, callback){
     var json = {prixMoyenAppart : "", prixMoyenMaison : "", loyerMensuel : "", evolutionAnnuelle : ""};
 
   // The URL we will scrape from - in our example Anchorman 2.
@@ -26,7 +25,9 @@ module.exports = {
       // The structure of our request call The first parameter is our URL The
       // callback function takes 3 parameters, an error, response status code
       // and the html request(url, function(error, response, html){ if(!error){
+      // var url = 'https://www.meilleursagents.com/prix-immobilier/argenteuil-95100/';
 
+      var url = 'https://www.meilleursagents.com/prix-immobilier/'+city+'-'+ parseInt(postalCode) +'/';
       request(url, function(error, response, html){
 
               //   First we'll check to make sure no errors occurred when making the request
@@ -76,7 +77,6 @@ module.exports = {
               evolutionAnnuelle = getCleanString(44, "\n", evolutionAnnuelle)
 
 
-
               // Fill json file.
               json.prixMoyenAppart = prixMoyenAppart;
               json.prixMoyenMaison = prixMoyenMaison;
@@ -101,7 +101,7 @@ module.exports = {
             // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
 
             //Fin du request
-            return callback(json);
+            //return callback(json);
     })
 
 //Fin du function

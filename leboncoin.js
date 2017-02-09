@@ -2,10 +2,11 @@ var express = require('express');
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
+var app = express()
 
 
 // The URL we will scrape from
-var url = 'https://www.leboncoin.fr/ventes_immobilieres/1026430112.htm?ca=12_s';
+//v<ar url = 'https://www.leboncoin.fr/ventes_immobilieres/1026430112.htm?ca=12_s';
 
 
 module.exports = {
@@ -17,6 +18,7 @@ module.exports = {
           // The callback function takes 3 parameters, an error, response status code and the html
             request(url, function(error, response, html){
                     if(!error){
+
                         var $ = cheerio.load(html);
 
                         var title, price, type, location, city, postalCode, type, houseSurface;
@@ -55,7 +57,7 @@ module.exports = {
 
                        //Separate City and Postal codePostal
                         var locationArray = location.split(" ");
-                        city = locationArray[0];
+                        city = locationArray[0].toLowerCase();
                         postalCode = locationArray[1];
 
 
@@ -80,6 +82,9 @@ module.exports = {
                         console.log(location)
                         console.log(type)
                         console.log(houseSurface);
+
+
+
                         response = json;
 
                     }
