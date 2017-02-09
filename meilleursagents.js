@@ -89,7 +89,6 @@ module.exports = {
               console.log(loyerMensuel);
               console.log(evolutionAnnuelle);
 
-
               //Fin du if
             }
 
@@ -101,7 +100,7 @@ module.exports = {
             // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
 
             //Fin du request
-            //return callback(json);
+            return callback(json);
     })
 
 //Fin du function

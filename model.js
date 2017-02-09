@@ -6,7 +6,10 @@ var app = express();
 var bodyParser = require('body-parser')
 
 
+var typeImmo = "";
 
+
+//Use CSS files and images
 app.use("/css",  express.static(__dirname + '/css'));
 app.use("/images",  express.static(__dirname + '/images'));
 
@@ -14,14 +17,15 @@ app.get('/', function (req, res) {
       res.sendFile(__dirname + '/index.html');
 });
 
+
+//Je sais pas ca sert a quoi mdr
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
+//Pareil
 app.use(bodyParser.json());
 
 app.post("/compare", function (req, res) {
-  console.log("tu passe pas par la");
 
     // Get URL from POST input
     var url=req.body.url;
@@ -32,8 +36,21 @@ app.post("/compare", function (req, res) {
         var type = json.type;
 
 
-        meilleursagents.getDataFromWebSite2(postalCode, ville, type);
-        res.sendFile(__dirname + '/index.html');
+        meilleursagents.getDataFromWebSite2(postalCode, ville, type, function(json){
+          res.sendFile(__dirname + '/compare.html');
+
+          if(type == "Appartement"){
+                //On remplit les variables pour le client
+            }
+            else {
+              //On remplit les variables pour le client
+            }
+
+            app.get("/", function(req, res){
+              res.render("index", { typeImmo: type });
+            });
+
+        });
 
     });
 
