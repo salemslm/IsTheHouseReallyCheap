@@ -46,6 +46,8 @@ module.exports = {
                         //Look for the house type
                        $('div.line.line_city').filter(function(){
                             var data = $(this);
+                            //while(data.children().children())
+                            console.log("STOOOOOOOOOOOOOOOOOP : " + data.next().children().children().first().text());
                             type =  data.next().next().children().children().next().text();
                         })
 

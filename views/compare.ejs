@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Compare</title>
+<meta charset="utf-8">
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Arimo:400,700,400italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+	<div id="maForm">
+
+		<div class ="ligne">
+			<p class="titremaison" > Titre maison : <p/>
+			<div class="case-form">
+			<div class="data"> <%= dataLBC.title %>  </div>
+			</div>
+		</div>
+
+		<div class ="ligne" >
+			<p class ="type"> Type :<p/>
+			<div class="case-form">
+			<div class="data"><%= dataLBC.type %>  </div>
+			</div>
+		</div>
+
+		<div class ="ligne" >
+			<p class="prix"> Son Prix :</p>
+			<div class="case-form">
+			<div class="data"> <%= dataLBC.price %> </div>
+			</div>
+		</div>
+
+		<div class ="ligne" >
+			<p class="ville"> Ville :</p>
+			<div class="case-form">
+			<div class="data"> <%= dataLBC.city %> </div>
+			</div>
+		</div>
+
+		<div class ="ligne" >
+			<p class="surface"> Surface :</p>
+			<div class="case-form">
+			<div class="data"> <%= dataLBC.houseSurface %> </div>
+			</div>
+		</div>
+
+		<div class ="ligne" >
+			<p class="prixmetrecarre">Prix moyen au m² dans cette ville :</p>
+			<div class="case-form">
+			<div class="data"><%= prixMoyen %>  </div>
+			</div>
+		</div>
+
+		<div class ="ligne" >
+			<p class="estimation"> On estime votre maison à :</p>
+			<div class="case-form"><% prixMoyen = prixMoyen.replace(/\s/g, '') %>
+				<% parseInt(prixMoyen.substring(0, prixMoyen.length)) %>
+			<div class="data"> <%=  parseInt(prixMoyen) * parseInt(dataLBC.houseSurface) %> </div>
+			</div>
+		</div>
+		<div class ="ligne" >
+			<p class="Resultat"> Resultat : </p>
+			<div class="case-form">
+			<div class="data"> <% if(parseInt(prixMoyen) * parseInt(dataLBC.houseSurface) > dataLBC.price ){%>
+					<h1> Ne l'achetez pas !</H1>
+
+			<% } else {%>
+				<h1> Achetez la ! </h1>
+				<% } %>
+
+
+			</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="copy-right">
+		<p>Salem & Félicien</a></p>
+	</div>
+</body>
+</html>
