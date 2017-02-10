@@ -62,12 +62,12 @@
 		</div>
 		<div class ="ligne" >
 			<p class="resultat"> Resultat : </p>
-			<div class="case-form">
+			<div id ="case-form">
 			<div class="data"> <% if(parseInt(prixMoyen) * parseInt(dataLBC.houseSurface) > dataLBC.price ){%>
-					<h1> Achetez la !</H1>
+					<h1> C'est une occasion en or, achetez la !</H1>
 
 			<% } else {%>
-				<h1> Ne l'achetez pas ! </h1>
+				<h1> Ne l'achetez pas, ce n'est pas rentable ! </h1>
 				<% } %>
 			</div>
 			</div>

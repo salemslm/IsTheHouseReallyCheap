@@ -210,13 +210,12 @@ input[type="submit"]{
 }
 
 #maForm {
-	
    margin: 0 auto;
    display: block ; 
    width:420px; 
-   height:400px; 
+   height:460px; 
    border-radius:0px; 
-   background :(../images/bg-1.png) center;
+   background : (../images/bg-1.png) center; 
    text-align :left;
 }
 
@@ -241,9 +240,23 @@ input[type="submit"]{
 	height:0 auto;
 	display: block;
 	background: url(../images/bg-2.png) no-repeat;
-	width: -200px;
+	width: 250px;
 	height: 23px;
-	border-radius: 0.6px;
+	border-radius: 0.6em;
+	-webkit-border-radius: 0.6em;
+	-moz-border-radius: 0.6em;
+	position: relative;
+	margin-left:100px; 
+    margin-top:0px;
+}
+
+#case-form{
+	height:0 auto;
+	display: block;
+	background: url(../images/bg-2.png) no-repeat;
+	width: -200px;
+	height: 40px;
+	border-radius: 0.6em;
 	-webkit-border-radius: 0.6em;
 	-moz-border-radius: 0.6em;
 	position: relative;
