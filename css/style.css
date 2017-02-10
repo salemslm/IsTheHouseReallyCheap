@@ -52,7 +52,7 @@ body{
 .logo {
 	position: absolute;
 	top: -24px;
-	left: 34.5%;
+	left: 34,5%;
 }
 .login-form h1{
 	font-size: 1.4em;
@@ -62,12 +62,12 @@ body{
 	text-align: center;
 	font-family: 'Arimo', sans-serif;
 	line-height: 1.4em;
-	width: 61%;
+	width: 60%;
 	margin: 0 auto;
 }
 form {
 	background: #342C29;
-	margin: 51px auto;
+	margin: 50px auto;
 	width: 90%;
 	border: 3px solid #302825;
 	border-radius: 0.3em;
@@ -96,7 +96,7 @@ input[type="text"] {
 }
 input[type="submit"]{
 	width:50px;
-	height:50px;
+	height:53px;
 	background: url(../images/submit.png) no-repeat;
 	outline: none;
 	border:none;
@@ -208,3 +208,103 @@ input[type="submit"]{
 	right: 16px;
 	}
 }
+
+#maForm {
+	
+   margin: 0 auto;
+   display: block ; 
+   width:420px; 
+   height:400px; 
+   border-radius:0px; 
+   background :(../images/bg-1.png) center;
+   text-align :left;
+}
+
+.data{
+	height:0 auto;
+	display: block;
+	width: 200px;
+	height: 25px;
+	background: (../images/bg-1.png) center;
+	text-align: center;
+}
+
+.ligne{
+	height:0 auto;
+	display: block;
+	width: 300px;
+	height: 25px;
+	background: (../images/bg-1.png) center;
+}
+
+.case-form{
+	height:0 auto;
+	display: block;
+	background: url(../images/bg-2.png) no-repeat;
+	width: -200px;
+	height: 23px;
+	border-radius: 0.6px;
+	-webkit-border-radius: 0.6em;
+	-moz-border-radius: 0.6em;
+	position: relative;
+	margin-left:100px; 
+    margin-top:0px;
+}
+
+
+.titremaison {
+	height:25px;
+	width:170px;
+	margin-left:center;
+	margin-top:30px;
+	border-radius:10px;	
+}
+
+.type {
+	height:25px;
+	width:170px;
+	margin-left:center;
+	margin-top:30px;
+	border-radius:10px;	
+}
+
+.prix {
+	height:25px;
+	width:170px;
+	margin-left:center ;
+	margin-top:30px;
+	border-radius:10px;	
+}
+
+.ville {
+	height:25px;
+	width:170px;
+	margin-left:center ;
+	margin-top:30px;
+	border-radius:10px;	
+}
+
+.surface {
+	height:25px;
+	width:170px;
+	margin-left:center;
+	margin-top:30px;
+	border-radius:10px;	
+}
+
+.prixmetrecarre {
+	height:25px;
+	width:170px;
+	margin-left:center;
+	margin-top:30px;
+	border-radius:10px;	 	
+}
+
+.estimation {
+	height:25px;
+	width:170px;
+	margin-left:center;
+	margin-top:30px;
+	border-radius:20px;	 	
+}
+

@@ -4,9 +4,11 @@ var express = require('express')
 var jsonLeboncoin, jsonMeilleursAgents;
 var app = express();
 var bodyParser = require('body-parser')
+var path = require('path');
 
 
-var typeImmo = "";
+
+var prixMoyen = 0;
 
 
 //Use CSS files and images
@@ -24,31 +26,30 @@ app.use(bodyParser.urlencoded({
 }));
 //Pareil
 app.use(bodyParser.json());
-
+app.set('view engine', 'ejs');
 app.post("/compare", function (req, res) {
 
     // Get URL from POST input
     var url=req.body.url;
 
-    leboncoin.getDataFromWebSite(url, function(json){
-        var ville = json.city;
-        var postalCode = json.postalCode;
-        var type = json.type;
+    leboncoin.getDataFromWebSite(url, function(jsonLBC){
+        var ville = jsonLBC.city;
+        var postalCode = jsonLBC.postalCode;
+        var type = jsonLBC.type;
 
 
-        meilleursagents.getDataFromWebSite2(postalCode, ville, type, function(json){
-          res.sendFile(__dirname + '/compare.html');
-
+        meilleursagents.getDataFromWebSite2(postalCode, ville, type, function(jsonMA){
           if(type == "Appartement"){
                 //On remplit les variables pour le client
+            prixMoyen = jsonMA.prixMoyenAppart;
             }
             else {
               //On remplit les variables pour le client
+              prixMoyen = jsonMA.prixMoyenMaison;
             }
 
-            app.get("/", function(req, res){
-              res.render("index", { typeImmo: type });
-            });
+            //res.sendFile(path.join(__dirname + '/compare.html'));
+            res.render("compare", {dataMA :jsonMA, dataLBC : jsonLBC, prixMoyen: prixMoyen });
 
         });
 
