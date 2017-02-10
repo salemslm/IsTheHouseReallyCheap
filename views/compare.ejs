@@ -64,17 +64,16 @@
 			<p class="resultat"> Resultat : </p>
 			<div id ="case-form">
 			<div class="data"> <% if(parseInt(prixMoyen) * parseInt(dataLBC.houseSurface) > dataLBC.price ){%>
-					<h1> C'est une occasion en or, achetez la !</H1>
+					<h1 id= "good"> C'est une occasion en or, achetez la !</H1>
 
 			<% } else {%>
-				<h1> Ne l'achetez pas, ce n'est pas rentable ! </h1>
+				<h1 id= "bad"> Ne l'achetez pas, ce n'est pas rentable ! </h1>
 				<% } %>
 			</div>
 			</div>
 		</div>
-
 	</div>
-
+	<a href="http://localhost:3000"> Revenir à la recherche</a>
 	<div class="copy-right">
 		<p>Salem & Félicien</a></p>
 	</div>

@@ -213,9 +213,9 @@ input[type="submit"]{
    margin: 0 auto;
    display: block ; 
    width:420px; 
-   height:460px; 
+   height:500px; 
    border-radius:0px; 
-   background : (../images/bg-1.png) center; 
+   background : (../images/bg-1.png) center;  
    text-align :left;
 }
 
@@ -255,7 +255,7 @@ input[type="submit"]{
 	display: block;
 	background: url(../images/bg-2.png) no-repeat;
 	width: 200px;
-	height: 40px;
+	height: 85px;
 	border-radius: 0.6em;
 	-webkit-border-radius: 0.6em;
 	-moz-border-radius: 0.6em;
@@ -321,13 +321,29 @@ input[type="submit"]{
 	border-radius:10px;	 	
 }
 
-
 .resultat {
 	height:25px;
 	width:170px;
 	margin-left:center;
 	margin-top:30px;
 	border-radius:10px;	 	
+}
+
+#bad{
+	color:red;
+	font-weight : bolder;
+	font-size: 25px;
+}
+
+#good{
+	color:green;
+	font-weight : bolder;
+	font-size: 25px;
+}
+
+a, a:hover {
+    color: black;
+    text-decoration: none;
 }
 
 
