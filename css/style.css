@@ -240,7 +240,7 @@ input[type="submit"]{
 	height:0 auto;
 	display: block;
 	background: url(../images/bg-2.png) no-repeat;
-	width: 250px;
+	width: 200px;
 	height: 23px;
 	border-radius: 0.6em;
 	-webkit-border-radius: 0.6em;
@@ -254,7 +254,7 @@ input[type="submit"]{
 	height:0 auto;
 	display: block;
 	background: url(../images/bg-2.png) no-repeat;
-	width: -200px;
+	width: 200px;
 	height: 40px;
 	border-radius: 0.6em;
 	-webkit-border-radius: 0.6em;
