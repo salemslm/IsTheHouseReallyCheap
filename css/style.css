@@ -29,7 +29,7 @@ img{max-width:100%;}
 /*end reset*/
 /****-----start-body----****/
 body{
-	background:url(../images/bg-1.png)  no-repeat center fixed;
+	background:url(../images/skyline.jpg)  no-repeat center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -212,10 +212,10 @@ input[type="submit"]{
 #maForm {
    margin: 0 auto;
    display: block ; 
-   width:420px; 
-   height:500px; 
-   border-radius:0px; 
-   background : (../images/bg-1.png) center;  
+   width:400px; 
+   height:590px; 
+   border-radius:10px; 
+   background : rgba(255,255,255,0.7);/*(../images/bg-1.png) center*/  
    text-align :left;
 }
 
@@ -344,6 +344,7 @@ input[type="submit"]{
 a, a:hover {
     color: black;
     text-decoration: none;
+	margin: 0 auto;
 }
 
 
