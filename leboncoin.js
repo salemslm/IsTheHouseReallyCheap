@@ -46,15 +46,26 @@ module.exports = {
                         //Look for the house type
                        $('div.line.line_city').filter(function(){
                             var data = $(this);
-                            //while(data.children().children())
-                            console.log("STOOOOOOOOOOOOOOOOOP : " + data.next().children().children().first().text());
-                            type =  data.next().next().children().children().next().text();
+                            //Type de bien
+                            while(data.children().children().first().text() != "Type de bien"){
+                              data = data.next();
+                              console.log("Bug Type");
+                            }
+
+                            //console.log("STOOOOOOOOOOOOOOOOOP : " + data.next().children().children().first().text());
+                            type =  data.children().children().next().text();
                         })
 
                         //Look for the house surface
                        $('div.line.line_city').filter(function(){
                             var data = $(this);
-                            houseSurface =  data.next().next().next().next().children().children().next().text();
+
+                            while(data.children().children().first().text() != "Surface"){
+                              data = data.next();
+                              console.log("Bug Surface");
+                            }
+
+                            houseSurface =  data.children().children().next().text();
                         })
 
                        //Separate City and Postal codePostal
