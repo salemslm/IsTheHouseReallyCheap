@@ -55,7 +55,7 @@
 
 		<div class ="ligne" >
 			<p class="estimation"> On estime votre maison à :</p>
-			<div class="case-form"><% prixMoyen = prixMoyen.replace(/\s/g, '') %>
+			<div class="case-form"> <% prixMoyen = prixMoyen.replace(/\s/g, "") %>
 				<% parseInt(prixMoyen.substring(0, prixMoyen.length)) %>
 			<div class="data"> <%=  parseInt(prixMoyen) * parseInt(dataLBC.houseSurface) %> </div>
 			</div>
