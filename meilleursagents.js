@@ -21,7 +21,7 @@ function casExceptionnel(city){
   // La lettre suivante est le é
   city = city.replace(/�/g, 'e');
 
-  
+
   //Dans le cas ou un des arrondissements est donné.
   if(city == "paris"){
     postalCode = "75000"
@@ -47,7 +47,7 @@ module.exports = {
       // var url = 'https://www.meilleursagents.com/prix-immobilier/argenteuil-95100/';
 
 
-      city = casExceptionnels(city);
+      city = casExceptionnel(city);
 
       var url = 'https://www.meilleursagents.com/prix-immobilier/'+city+'-'+ parseInt(postalCode) +'/';
       request(url, function(error, response, html){
@@ -74,21 +74,18 @@ module.exports = {
               $('.prices-summary__values').filter(function(){
                   var data = $(this);
                   prixMoyenMaison = data.children().next().next().children().first().next().next().text();
-
               })
 
               // Look for the average monthly rent price per m²
               $('.prices-summary__values').filter(function(){
                   var data = $(this);
                   loyerMensuel = data.children().next().next().next().children().first().next().next().text();
-
               })
 
               // Look for the average monthly rent price per m²
               $('.prices-summary__right-panel').filter(function(){
                   var data = $(this);
                   evolutionAnnuelle = data.children().children().children().next().children().first().text();
-
               })
 
               // The web site give us strings with wastes

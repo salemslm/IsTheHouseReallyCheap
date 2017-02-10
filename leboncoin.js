@@ -18,7 +18,6 @@ module.exports = {
           // The callback function takes 3 parameters, an error, response status code and the html
             request(url, function(error, response, html){
                     if(!error){
-
                         var $ = cheerio.load(html);
 
                         var title, price, type, location, city, postalCode, type, houseSurface;
@@ -47,8 +46,9 @@ module.exports = {
                        $('div.line.line_city').filter(function(){
                             var data = $(this);
                             //Type de bien
-                            while(data.children().children().first().text() != "Type de bien"){
+                            while(data.children().children().first().text() != "Type de bien" ){
                               data = data.next();
+
                             }
 
                             type =  data.children().children().next().text();
@@ -58,8 +58,9 @@ module.exports = {
                        $('div.line.line_city').filter(function(){
                             var data = $(this);
 
-                            while(data.children().children().first().text() != "Surface"){
+                            while(data.children().children().first().text() != "Surface" ){
                               data = data.next();
+
                             }
 
                             houseSurface =  data.children().children().next().text();
