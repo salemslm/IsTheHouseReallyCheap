@@ -12,6 +12,25 @@ function getCleanString(indexStart, textCut, stringToBeClean){
   stringToBeClean = stringToBeClean.substring(0, index);
   return stringToBeClean;
 }
+function casExceptionnel(city){
+  //Dans le cas ou il y a une ' (apostrophe) dans le nom de la ville, il faut le remplacer par un -.
+  city = city.replace(/'/g, '-');
+  city = city.replace(/é/g, 'e');
+  city = city.replace(/é/g, 'e');
+
+  // La lettre suivante est le é
+  city = city.replace(/�/g, 'e');
+
+  
+  //Dans le cas ou un des arrondissements est donné.
+  if(city == "paris"){
+    postalCode = "75000"
+  }
+  else if(city == "lyon"){
+    postalCode = "69000"
+  }
+  return city;
+}
 
 
 
@@ -27,15 +46,9 @@ module.exports = {
       // and the html request(url, function(error, response, html){ if(!error){
       // var url = 'https://www.meilleursagents.com/prix-immobilier/argenteuil-95100/';
 
-      //Dans le cas ou il y a une ' (apostrophe) dans le nom de la ville, il faut le remplacer par un -.
-      city = city.replace(/'/g, '-');
 
-      if(city == "paris"){
-        postalCode = "75000"
-      }
-      else if(city == "lyon"){
-        postalCode = "69000"
-      }
+      city = casExceptionnels(city);
+
       var url = 'https://www.meilleursagents.com/prix-immobilier/'+city+'-'+ parseInt(postalCode) +'/';
       request(url, function(error, response, html){
             console.log(url);
