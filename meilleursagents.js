@@ -27,9 +27,18 @@ module.exports = {
       // and the html request(url, function(error, response, html){ if(!error){
       // var url = 'https://www.meilleursagents.com/prix-immobilier/argenteuil-95100/';
 
+      //Dans le cas ou il y a une ' (apostrophe) dans le nom de la ville, il faut le remplacer par un -.
+      city = city.replace(/'/g, '-');
+
+      if(city == "paris"){
+        postalCode = "75000"
+      }
+      else if(city == "lyon"){
+        postalCode = "69000"
+      }
       var url = 'https://www.meilleursagents.com/prix-immobilier/'+city+'-'+ parseInt(postalCode) +'/';
       request(url, function(error, response, html){
-
+            console.log(url);
               //   First we'll check to make sure no errors occurred when making the request
 
             if(!error){
