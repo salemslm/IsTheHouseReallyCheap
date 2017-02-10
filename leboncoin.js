@@ -49,10 +49,8 @@ module.exports = {
                             //Type de bien
                             while(data.children().children().first().text() != "Type de bien"){
                               data = data.next();
-                              console.log("Bug Type");
                             }
 
-                            //console.log("STOOOOOOOOOOOOOOOOOP : " + data.next().children().children().first().text());
                             type =  data.children().children().next().text();
                         })
 
@@ -62,7 +60,6 @@ module.exports = {
 
                             while(data.children().children().first().text() != "Surface"){
                               data = data.next();
-                              console.log("Bug Surface");
                             }
 
                             houseSurface =  data.children().children().next().text();

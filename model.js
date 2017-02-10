@@ -7,7 +7,6 @@ var bodyParser = require('body-parser')
 var path = require('path');
 
 
-
 var prixMoyen = 0;
 
 
@@ -64,23 +63,3 @@ app.listen(3000, function () {
 console.log("Done !!");
 
 
-//
-// console.log("LOL : " + __dirname);
-// app.get('/index', function(req, res){
-//   res.send('id: ' + req.query.id);
-//   //console.log(req.body.url);
-// });
-//
-// var responseLeboncoin = leboncoin.getDataFromWebSite('https://www.leboncoin.fr/ventes_immobilieres/1026430112.htm?ca=12_s', function(json){
-//   jsonLeboncoin = json;
-// });
-//
-// var responseMeilleursAgents = meilleursagents.getDataFromWebSite2('https://www.meilleursagents.com/prix-immobilier/argenteuil-95100/', function(json){
-//   jsonMeilleursAgents = json;
-// });
-//
-// app.listen(3000, function () {
-//   console.log('Example app listening on port 3000!')
-// })
-//
-// console.log("Done !!");
